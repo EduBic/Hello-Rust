@@ -29,7 +29,6 @@ impl RidderMethod {
 
         let mut xs = Vec::new();
         let mut fs = Vec::new();
-        let mut error: f64;
         let mut i = 0;
         
         let mut error: f64 = 10E+10;
