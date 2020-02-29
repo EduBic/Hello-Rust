@@ -3,6 +3,7 @@
 
 
 // ## Generic datatypes
+#[derive(Copy,Clone)]
 pub enum SomethingOrNothing<T>  {
     Something(T),
     Nothing,
