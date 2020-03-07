@@ -37,15 +37,20 @@ impl BigInt {
     // 
     // *Hint*: You can use `pop` to remove the last element of a vector.
     pub fn from_vec(mut v: Vec<u64>) -> Self {
-        if v.len() == 0 {
-            BigInt { data: vec![] }
-        } else {
-            let mut res = BigInt::new(0);
-            for e in v.iter().rev() {
-                res.data.push(*e)
-            }
-            res
+        // if v.len() == 0 {
+        //     BigInt { data: vec![] }
+        // } else {
+        //     let mut res = BigInt::new(0);
+        //     for e in v.iter().rev() {
+        //         res.data.push(*e)
+        //     }
+        //     res
+        // }
+        // remove trailing zeros
+        while v.len() > 0 && v[v.len()-1] == 0 {
+            v.pop();
         }
+        BigInt { data: v }
     }
 
     // useless since we can use #[derive(Clone)] attribute of rust
@@ -92,6 +97,7 @@ fn clone_demo() {
 
 // Again, Rust will generate this implementation automatically 
 // if you add #[derive(Clone)] right before the definition of SomethingOrNothing.
+/*
 use part02::{ SomethingOrNothing, Something, Nothing };
 
 impl<T: Clone> Clone for SomethingOrNothing<T> {
@@ -103,6 +109,7 @@ impl<T: Clone> Clone for SomethingOrNothing<T> {
         }
     }
 }
+*/
 
 // **Exercise 05.2**: Write some more functions on `BigInt`. What about a function that returns the
 // number of digits? The number of non-zero digits? The smallest/largest digit? Of course, these

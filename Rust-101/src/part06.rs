@@ -27,7 +27,7 @@ fn vec_min(v: &Vec<BigInt>) -> Option<BigInt> {
     // `iter`, the iterator that borrows the elements.
     for e in v {
         let e = e.clone();
-        min = Some(match {
+        min = Some(match min {
             None => e,
             Some(n) => e.min_try1(n)
         })
@@ -37,8 +37,9 @@ fn vec_min(v: &Vec<BigInt>) -> Option<BigInt> {
 
 // ## `Copy` types
 
-use part02::{SomethingOrNothing,Something,Nothing};
-impl<T: Copy> Copy for SomethingOrNothing<T> {}
+// Not NEEDED since we can use attribute #[Derive(Copy)]
+// use part02::{SomethingOrNothing,Something,Nothing};
+// impl<T: Copy> Copy for SomethingOrNothing<T> {}
 
 // implements Clone trait makes the copy constructur only explicit
 // implements Copy trait makes the copy implicit (i32 impl it for ex.)
